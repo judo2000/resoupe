@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server/server.js",
+    "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\""
   },
   "repository": {
     "type": "git",
@@ -17,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/judo2000/resoupe/issues"
   },
-  "homepage": "https://github.com/judo2000/resoupe#readme"
+  "homepage": "https://github.com/judo2000/resoupe#readme",
+  "dependencies": {
+    "concurrently": "^7.1.0"
+  }
 }
