@@ -21,18 +21,23 @@ function Outside() {
   }, []);
 
   return (
-    <>
-      <h1 className='text-6xl mb-4'>Outside API</h1>
-      <ul>
+    <div className='container mx-auto'>
+      <h1 className='text-primary text-6xl mb-4'>Outside API</h1>
+      <div className='grid grid-cols-4 gap-4'>
         {recipes.map((recipe, index) => (
-          <li key={recipe.recipe.uri.split("#recipe_")[1]}>
+          <div key={recipe.recipe.uri.split("#recipe_")[1]}>
             <Link to={`/singlePage/${recipe.recipe.uri.split("#recipe_")[1]}`}>
-              {recipe.recipe.label}
+              <div className='mb-2 rounded-md card bg-gray-800 hover:bg-gray-900'>
+                <div className='card-body'>{recipe.recipe.label}</div>
+                <p>
+                  <img src={recipe.recipe.images.THUMBNAIL.url} alt='recipe' />
+                </p>
+              </div>
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
-    </>
+      </div>
+    </div>
   );
 }
 
