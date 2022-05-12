@@ -22,6 +22,7 @@ function Outside() {
 
   return (
     <>
+      <h1 className='text-6xl mb-4'>Outside API</h1>
       <ul>
         {recipes.map((recipe, index) => (
           <li key={recipe.recipe.uri.split("#recipe_")[1]}>
