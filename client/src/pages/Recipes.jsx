@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import RecipeCard from "../components/RecipeCard";
 
 function Recipes({ recipe }) {
@@ -49,10 +50,13 @@ function Recipes({ recipe }) {
 
       <div className='grid grid-cols-4 gap-4'>
         {recipes.map((recipe) => (
-          <RecipeCard
-            recipe={recipe}
-            key={recipe.recipe.uri.split("#recipe_")[1]}
-          />
+          <div key={recipe.recipe.uri.split("#recipe_")[1]}>
+            <Link
+              to={`/recipeDetails/${recipe.recipe.uri.split("#recipe_")[1]}`}
+            >
+              <RecipeCard recipe={recipe} />
+            </Link>
+          </div>
         ))}
       </div>
     </div>

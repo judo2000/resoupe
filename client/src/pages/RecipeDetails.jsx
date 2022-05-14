@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import RecipeCard from "../components/RecipeCard";
 
 function RecipeDetails() {
   const params = useParams();
@@ -13,17 +12,35 @@ function RecipeDetails() {
     const fetchData = async () => {
       const response = await fetch(url);
       const data = await response.json();
-      setRecipe(data);
-      console.log(data);
+      setRecipe(data.recipe);
+      console.log(data.recipe.ingredients[0].text);
     };
 
     fetchData();
   }, [url]);
 
   return (
-    <div className='grid grid-cols-4 gap-4'>
+    <div className='container mx-auto px-4'>
       <h1>Recipe</h1>
-      <RecipeCard recipe={recipe} />
+      <div>
+        <div className='mb-2 rounded-md card bg-yellow-800 hover:bg-yellow-900'>
+          <div className='card-header text-cente'>
+            <h1 className='text-white text-6xl mb-4 text-center'>
+              {recipe.label}
+            </h1>
+          </div>
+          <div className='card-body'>
+            <div>
+              <img src={recipe.image} className='float-left pr-4' alt='alt' />
+              <ul>
+                {recipe.ingredients?.map((ingredient, index) => (
+                  <li key={index}>{ingredient.text}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
