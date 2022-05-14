@@ -1,12 +1,14 @@
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
-import Outside from "./pages/Outside";
+import Recipes from "./pages/Recipes";
+import RecipeDetails from "./pages/RecipeDetails";
 
 function App() {
   return (
     <div className='App'>
       <Router>
         <Routes>
-          <Route exact path='/outside' element={<Outside />} />
+          <Route exact path='/recipes' element={<Recipes />} />
+          <Route exact path='/recipeDetails/' element={<RecipeDetails />} />
         </Routes>
       </Router>
     </div>
